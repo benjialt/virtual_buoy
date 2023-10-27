@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Value</title>
+</head>
+<body>
+    <h1>Prediction Value:</h1>
+    <p id="predictionValue"></p>
+    
+    <script>
+        // JavaScript to fetch and update the prediction value
+        function updatePredictionValue() {
+            fetch('/prediction')  // This should match the route in your Python server
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('predictionValue').textContent = data;
+                });
+        }
+
+        // Update the prediction value initially and every 2 seconds
+        updatePredictionValue();
+        setInterval(updatePredictionValue, 5000);
+    </script>
+</body>
+</html>
